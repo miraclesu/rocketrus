@@ -48,7 +48,6 @@ func main() {
 #### Required
   * HookURL
   * Channel
-
   * UserID & Token or Email & Password
 
 #### Optional
