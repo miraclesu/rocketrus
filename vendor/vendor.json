@@ -1,0 +1,19 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "fGpnh/OpxxgBc+1Gbemmc/Ef0rI=",
+			"path": "github.com/RocketChat/Rocket.Chat.Go.SDK/models",
+			"revision": "64764e9c802be33ec04e7efa8a4489551e112d23",
+			"revisionTime": "2018-06-06T11:57:29Z"
+		},
+		{
+			"checksumSHA1": "gHKsJDj4NbQU3+hUERJfXh04esE=",
+			"path": "github.com/RocketChat/Rocket.Chat.Go.SDK/rest",
+			"revision": "64764e9c802be33ec04e7efa8a4489551e112d23",
+			"revisionTime": "2018-06-06T11:57:29Z"
+		}
+	],
+	"rootPath": "github.com/miraclesu/rocketrus"
+}
