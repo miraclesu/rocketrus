@@ -22,6 +22,7 @@ func main() {
 		Channel: "general",
 
 		NotifyUsers: []string{"miracle", "yuhcwl"},
+		AcceptedLevels: rocketrus.LevelThreshold(logrus.DebugLevel),
 
 		Email:    "suchuangji@gmail.com",
 		Password: "gopher",

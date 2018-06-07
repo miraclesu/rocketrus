@@ -41,6 +41,8 @@ type RocketrusHook struct {
 	NotifyUsers []string
 	// batch send message duration, uion/second, default is 10 seconds
 	// if duration is negative, RocketrusHook will block ticker message send
+	// e.g. Duration:10, Batch:8 means received more than(include equal) 8 logs in 10 seconds will send as one message to RocketChat immediately, or after 10 seconds received any(>=1) logs will send as one message to RocketChat.
+	// e.g. Duration:-1, Batch:8 means only received more than(include equal) 8 logs then send to RocketChat
 	Duration int64
 	// batch send message, default is 8
 	Batch int
@@ -116,8 +118,9 @@ func (rh *RocketrusHook) send() {
 		duration time.Duration
 	)
 	if rh.Duration < 0 {
-		timer = time.NewTimer(0)
-		timer.C = nil
+		timer = &time.Timer{
+			C: nil,
+		}
 	} else {
 		duration = time.Duration(rh.Duration) * time.Second
 		timer = time.NewTimer(duration)
@@ -129,7 +132,9 @@ func (rh *RocketrusHook) send() {
 			rh.msg.Attachments = append(rh.msg.Attachments, *msg)
 			if len(rh.msg.Attachments) >= rh.Batch {
 				rh.postMessage()
-				timer.Reset(duration)
+				if rh.Duration > 0 {
+					timer.Reset(duration)
+				}
 			}
 		case <-timer.C:
 			if len(rh.msg.Attachments) == 0 {
