@@ -164,6 +164,15 @@ func (rh *RocketrusHook) Levels() []logrus.Level {
 	return rh.AcceptedLevels
 }
 
+func (rh *RocketrusHook) isAcceptedLevel(level logrus.Level) bool {
+	for _, l := range rh.Levels() {
+		if l == level {
+			return true
+		}
+	}
+	return false
+}
+
 // Fire -  Sent event to RocketChat
 func (rh *RocketrusHook) Fire(e *logrus.Entry) error {
 	if rh.Disabled {
@@ -171,6 +180,9 @@ func (rh *RocketrusHook) Fire(e *logrus.Entry) error {
 	}
 	if !rh.running {
 		return NotRunningErr
+	}
+	if !rh.isAcceptedLevel(e.Level) {
+		return nil
 	}
 
 	color := ""
