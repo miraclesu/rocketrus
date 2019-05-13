@@ -198,10 +198,10 @@ func (rh *RocketrusHook) Fire(e *logrus.Entry) error {
 	}
 
 	msg := &models.Attachment{
-		Color: color,
-		Title: e.Level.String() + " log",
-		Ts:    e.Time.String(),
-		Text:  e.Message,
+		Color:     color,
+		Title:     e.Level.String() + " log",
+		Timestamp: e.Time.String(),
+		Text:      e.Message,
 	}
 
 	if len(e.Data) > 0 {
