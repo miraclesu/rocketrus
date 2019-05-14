@@ -12,7 +12,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/mradspieler/rocketrus"
+	"github.com/miraclesu/rocketrus"
 	"github.com/sirupsen/logrus"
 )
 
@@ -63,7 +63,7 @@ func main() {
   * Batch
 ## Installation
 
-    go get github.com/mradspieler/rocketrus
+    go get github.com/miraclesu/rocketrus
 
 ## Credits
 
